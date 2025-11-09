@@ -1,7 +1,7 @@
 import styled, { ThemeProvider } from "styled-components";
 import { darkTheme } from "./utils/Themes";
 import Navbar from "./components/Navbar";
-import { BrowserRouter, Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Hero from "./components/sections/Hero";
 import Skills from "./components/sections/Skills";
 import Experience from "./components/sections/Experience";
@@ -11,6 +11,7 @@ import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
 
+// Styled components
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
   width: 100%;
@@ -34,13 +35,17 @@ const Wrapper = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%);
 `;
 
+// Main App Component
 function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <BrowserRouter>
         <Navbar />
         <Body>
+          {/* Background Canvas */}
           <StartCanvas />
+
+          {/* Main Portfolio Sections */}
           <div>
             <Hero />
             <Wrapper>
@@ -54,6 +59,8 @@ function App() {
             </Wrapper>
             <Footer />
           </div>
+
+          {/* 👇 Floating 3D AI Assistant */}
         </Body>
       </BrowserRouter>
     </ThemeProvider>
