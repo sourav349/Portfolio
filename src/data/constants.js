@@ -1,22 +1,27 @@
+// import { Reddit } from "@mui/icons-material";
+
 export const Bio = {
   name: "SOURAV KUMAR",
   roles: [
     "Fronted Developer",
-    "Game Developer",
-    "UI/UX Designer",
     "Programmer",
     "Software Developer",
+    "Machine Learning",
+    "UI/UX Designer",
   ],
   description:
     "I am a motivated and versatile individual, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.",
   github: "https://github.com/sourav349",
   resume:
-    "https://drive.google.com/file/d/1i-sEu-2b4uS1_9oCyJFjY_5ouf9N-IxB/view?usp=drivesdk",
+    "https://drive.google.com/file/d/1puGVlPF6C294IAQawty0GjxWqfmlKp3T/view?usp=drivesdk",
   linkedin: "https://www.linkedin.com/in/sourav2401/",
   twitter: "https://x.com/SOURAVKUMA23059?s=09",
   insta: "https://www.instagram.com/sourav_agarwal_24/",
   facebook:
     "https://www.facebook.com/profile.php?id=61563022732358&mibextid=ZbWKwL",
+  bsky: "https://bsky.app/profile/sourav2401.bsky.social",
+  discord: "https://discord.com/users/1200762382700519497",
+  reddit: "https://www.reddit.com/user/Then-Horse-5100",
 };
 
 export const skills = [
@@ -57,11 +62,11 @@ export const skills = [
         image:
           "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
       },
-      {
-        name: "Bootstrap",
-        image:
-          "https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png",
-      },
+      // {
+      //   name: "Bootstrap",
+      //   image:
+      //     "https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png",
+      // },
       {
         name: "Material UI",
         image:
@@ -100,11 +105,11 @@ export const skills = [
         image:
           "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flask_logo.svg/1280px-Flask_logo.svg.png",
       },
-      {
-        name: "Django",
-        image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlFFyY16N5NRhzoG24RqB7x8Ok2t8Bdgs-tuMsOBXS2Q&s",
-      },
+      // {
+      //   name: "Django",
+      //   image:
+      //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlFFyY16N5NRhzoG24RqB7x8Ok2t8Bdgs-tuMsOBXS2Q&s",
+      // },
       {
         name: "MySQL",
         image:
@@ -343,7 +348,7 @@ export const experiences = [
     company: "DSC JUET",
     date: "Sept2023 - Nov2024",
     desc: "As an Fronted developer at the Google Developers Student Club (GDCS), I have had the opportunity to work on exciting projects and collaborate with talented developers who share my passion for technology. Through my involvement with GDCS, I have also had the opportunity to host and participate in numerous events, including hackathons, study jams, and workshops.",
-    skills: ["Leadership", "Web Application Development", "Machine Learning"],
+    skills: ["Leadership", "Web Application Development"],
   },
   {
     id: 4,
@@ -415,7 +420,7 @@ export const projects = [
     date: "september 2025 - Present",
     description:
       "This project introduces a centralized alumni management platform that streamlines mentorship, career tracking, event management, and fundraising. It addresses scattered alumni data, poor engagement, and lack of mentorship by providing a secure, real-time system connecting alumni, students, and institutions. The platform enhances career development, transparency in resource utilization, and institutional reputation through structured communication and collaboration.",
-    image: "jh,khjk",
+    image: "https://github.com/sourav349/photo/blob/main/alumini.png?raw=true",
     tags: [
       "React.js",
       "Next.js",
@@ -431,16 +436,23 @@ export const projects = [
   },
   {
     id: 3,
-    title: "Ai-Assistant Therapist",
-    date: "August 2025 - March 2026",
-    description:
-      "ApnaGarden connects farmers and vendors with customers for fresh produce sales by leveraging HTML, CSS, and JavaScript. It enables vendors to showcase vegetables and fruits while streamlining product browsing and purchasing, enhancing accessibility and improving the overall user experience.",
-    image:
-      "https://github.com/user-attachments/assets/fe7db790-e811-4f88-bf39-5d994962509d",
-    tags: ["HTML", "CSS", "Javascript"],
+    title:
+      "Ai-Assistant Therapist & medical Chatbot and Mental Health Analyzer",
+    date: "August 2025 - on going(development phase)",
+    description: "",
+    // image:
+    // "https://github.com/user-attachments/assets/fe7db790-e811-4f88-bf39-5d994962509d",
+    tags: [
+      "Next.js",
+      "Tailwindcss",
+      "Machine Learning",
+      "Python",
+      "Flask",
+      "Supabase",
+    ],
     category: "web app",
-    github: "https://github.com/sourav349/ApnaGarden-Clone.git",
-    webapp: "https://sourav349.github.io/ApnaGarden-Clone/",
+    // github: "https://github.com/sourav349/ApnaGarden-Clone.git",
+    // webapp: "https://sourav349.github.io/ApnaGarden-Clone/",
   },
 
   {
@@ -537,7 +549,7 @@ export const projects = [
     description:
       "A 24×7 Healthcare App developed using Android Studio provides real-time medical assistance, doctor consultations, health monitoring, and emergency support, ensuring accessible, reliable, and continuous healthcare services anytime and anywhere.",
     image:
-      "https://github.com/user-attachments/assets/52e66684-a133-4fbf-ae6e-3821565f374f",
+      "https://github.com/user-attachments/assets/70c7cff1-cd44-4b10-9579-defbcde81b66",
     tags: ["Java", "javascript", "Android Studio"],
     category: "android app",
     github: "https://github.com/sourav349/24-4-Healthcare.git",
@@ -550,7 +562,7 @@ export const projects = [
     description:
       "The Blood Donation App is an Android-based platform designed to bridge the gap between blood donors and recipients. It allows users to easily register, search for nearby donors, and request blood in emergencies. With real-time location tracking, instant alerts, and hospital collaboration, the app ensures quick responses and efficient blood availability. It promotes social responsibility, encourages voluntary donation, and supports life-saving connections within the community.",
     image:
-      "https://github.com/user-attachments/assets/52e66684-a133-4fbf-ae6e-3821565f374f",
+      "https://github.com/user-attachments/assets/665f8ff0-ae92-48c7-886f-ccb66573745d",
     tags: ["Java", "javascript", "Android Studio"],
     category: "android app",
     github: "https://github.com/sourav349/Bood-Donation-.git",

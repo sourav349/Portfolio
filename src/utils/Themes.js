@@ -9,6 +9,10 @@ export const darkTheme = {
   button: "#854CE6",
   white: "#FFFFFF",
   black: "#000000",
+  // bg: "#0b0c10",
+  // primary: "#00FFFF", // cyan glow
+  // text_primary: "#EAEAEA",
+  soft2: "#AAAAAA",
 };
 
 export const lightTheme = {

@@ -1,3 +1,4 @@
+// App.jsx
 import styled, { ThemeProvider } from "styled-components";
 import { darkTheme } from "./utils/Themes";
 import Navbar from "./components/Navbar";
@@ -6,12 +7,15 @@ import Hero from "./components/sections/Hero";
 import Skills from "./components/sections/Skills";
 import Experience from "./components/sections/Experience";
 import Education from "./components/sections/Education";
-import StartCanvas from "./components/canvas/Stars";
+import StarsCanvas from "./components/canvas/Stars"; // ✅ Corrected name (was StartCanvas)
 import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
+import AIAssistant from "./components/AIAssistant";
 
-// Styled components
+// =====================
+// Styled Components
+// =====================
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
   width: 100%;
@@ -35,7 +39,9 @@ const Wrapper = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%);
 `;
 
+// =====================
 // Main App Component
+// =====================
 function App() {
   return (
     <ThemeProvider theme={darkTheme}>
@@ -43,8 +49,7 @@ function App() {
         <Navbar />
         <Body>
           {/* Background Canvas */}
-          <StartCanvas />
-
+          <StarsCanvas /> {/* ✅ Corrected component name */}
           {/* Main Portfolio Sections */}
           <div>
             <Hero />
@@ -58,9 +63,8 @@ function App() {
               <Contact />
             </Wrapper>
             <Footer />
+            <AIAssistant /> {/* ✅ Keep this last for overlay/assistant */}
           </div>
-
-          {/* 👇 Floating 3D AI Assistant */}
         </Body>
       </BrowserRouter>
     </ThemeProvider>
