@@ -3,11 +3,10 @@
 export const Bio = {
   name: "SOURAV KUMAR",
   roles: [
+    "Software Developer",
+    "AI/ML Engineer",
     "Fronted Developer",
     "Programmer",
-    "Software Developer",
-    "Machine Learning",
-    "UI/UX Designer",
   ],
   description:
     "I am a motivated and versatile individual, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.",
@@ -33,11 +32,11 @@ export const skills = [
         image:
           "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K",
       },
-      {
-        name: "Redux",
-        image:
-          "https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg",
-      },
+      // {
+      //   name: "Redux",
+      //   image:
+      //     "https://d33wubrfki0l68.cloudfront.net/0834d0215db51e91525a25acf97433051f280f2f/c30f5/img/redux.svg",
+      // },
       {
         name: "Next Js",
         image:
@@ -119,91 +118,91 @@ export const skills = [
       // name: "Postgresql",
       //image: "https://www.postgresql.org/media/img/about/press/elephant.png",
       // },
-      {
-        name: "MongoDB",
-        image:
-          "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg",
-      },
+      // {
+      //   name: "MongoDB",
+      //   image:
+      //     "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg",
+      // },
       {
         name: "Firebase",
         image: "https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg",
       },
     ],
   },
-  // {
-  // title: "DevOps",
-  // skills: [
-  //   {
-  //  name: "AWS",
-  // image:
-  // "https://download.logo.wine/logo/Amazon_Web_Services/Amazon_Web_Services-Logo.wine.png",
-  // },
-  //     {
-  //       name: "Google Cloud",
-  //       image:
-  //         "https://static-00.iconduck.com/assets.00/google-cloud-platform-logo-icon-2048x1824-pg4wzspq.png",
-  //     },
-  // {
-  //  name: "Docker",
-  // image:
-  //  "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg",
-  //  },
-  //     {
-  //       name: "Jenkins",
-  //       image:
-  //         "https://toppng.com/uploads/preview/jenkins-logo-11609365847mufysaivph.png",
-  //     },
-  //     {
-  //       name: "Nginx",
-  //       image: "https://download.logo.wine/logo/Nginx/Nginx-Logo.wine.png",
-  //     },
-  //     {
-  //       name: "Grafana",
-  //       image:
-  //         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Grafana_logo.svg/1200px-Grafana_logo.svg.png",
-  //     },
-  //     {
-  //       name: "Kubernetes",
-  //       image:
-  //         "https://upload.wikimedia.org/wikipedia/commons/0/00/Kubernetes_%28container_engine%29.png",
-  //     },
-  //     {
-  //       name: "Prometheus",
-  //       image:
-  //         "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/1200px-Prometheus_software_logo.svg.png",
-  //     },
-  // ],
-  // },
   {
-    title: "Android",
-    skills: [
-      {
-        name: "Java",
-        image:
-          "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
-      },
-      // {
-      //   name: "Kotlin",
-      //   image:
-      //     "https://www.vectorlogo.zone/logos/kotlinlang/kotlinlang-icon.svg",
-      // },
-      // {
-      //   name: "Jetpack Compose",
-      //   image:
-      //     "https://3.bp.blogspot.com/-VVp3WvJvl84/X0Vu6EjYqDI/AAAAAAAAPjU/ZOMKiUlgfg8ok8DY8Hc-ocOvGdB0z86AgCLcBGAsYHQ/s1600/jetpack%2Bcompose%2Bicon_RGB.png",
-      // },
-      // {
-      //   name: "XML",
-      //   image:
-      //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBMw6_RdwKQ9bDFfnKDX1iwMl4bVJEvd9PP53XuIw&s",
-      // },
-      {
-        name: "Android Studio",
-        image:
-          "https://developer.android.com/static/studio/images/new-studio-logo-1_1920.png",
-      },
-    ],
+  title: "DevOps",
+  skills: [
+    {
+   name: "AWS",
+  image:
+  "https://download.logo.wine/logo/Amazon_Web_Services/Amazon_Web_Services-Logo.wine.png",
   },
+      {
+        name: "Google Cloud",
+        image:
+          "https://static-00.iconduck.com/assets.00/google-cloud-platform-logo-icon-2048x1824-pg4wzspq.png",
+      },
+  {
+   name: "Docker",
+  image:
+   "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg",
+   },
+      // {
+      //   name: "Jenkins",
+      //   image:
+      //     "https://toppng.com/uploads/preview/jenkins-logo-11609365847mufysaivph.png",
+      // },
+      {
+        name: "Nginx",
+        image: "https://download.logo.wine/logo/Nginx/Nginx-Logo.wine.png",
+      },
+      {
+        name: "Grafana",
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Grafana_logo.svg/1200px-Grafana_logo.svg.png",
+      },
+      {
+        name: "Kubernetes",
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/0/00/Kubernetes_%28container_engine%29.png",
+      },
+      // {
+      //   name: "Prometheus",
+      //   image:
+      //     "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/1200px-Prometheus_software_logo.svg.png",
+      // },
+  ],
+  },
+  // {
+  //   title: "Android",
+  //   skills: [
+  //     {
+  //       name: "Java",
+  //       image:
+  //         "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
+  //     },
+  //     // {
+  //     //   name: "Kotlin",
+  //     //   image:
+  //     //     "https://www.vectorlogo.zone/logos/kotlinlang/kotlinlang-icon.svg",
+  //     // },
+  //     // {
+  //     //   name: "Jetpack Compose",
+  //     //   image:
+  //     //     "https://3.bp.blogspot.com/-VVp3WvJvl84/X0Vu6EjYqDI/AAAAAAAAPjU/ZOMKiUlgfg8ok8DY8Hc-ocOvGdB0z86AgCLcBGAsYHQ/s1600/jetpack%2Bcompose%2Bicon_RGB.png",
+  //     // },
+  //     // {
+  //     //   name: "XML",
+  //     //   image:
+  //     //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBMw6_RdwKQ9bDFfnKDX1iwMl4bVJEvd9PP53XuIw&s",
+  //     // },
+  //     {
+  //       name: "Android Studio",
+  //       image:
+  //         "https://developer.android.com/static/studio/images/new-studio-logo-1_1920.png",
+  //     },
+  //   ],
+  // },
   {
     title: "Machine Learning",
     skills: [
@@ -285,31 +284,32 @@ export const experiences = [
   {
     id: 0,
     img: "https://raw.githubusercontent.com/sourav349/photo/refs/heads/main/DRDO.jpg",
-    role: "Machine Learning / Image Processing",
+    role: "Machine Learning / Image Processing Intern",
     company:
       "IRDE-DRDO (Instruments Research and Development Establishment – Defence Research and Development Organisation)",
     date: "May 2025 - July 2025",
-    desc: "At IRDE-DRDO, we worked on developing and analyzing Non-Uniformity Correction (NUC) algorithms for infrared imaging systems. The project involved studying pixel response variations, implementing calibration and scene-based correction methods, and exploring deep learning models for real-time image enhancement to improve accuracy and performance in defense-grade thermal cameras.",
+    desc: "At IRDE-DRDO, I worked on developing and analyzing Non-Uniformity Correction (NUC) algorithms for infrared imaging systems. The project involved studying pixel response variations, implementing calibration and scene-based correction methods, and exploring deep learning models for real-time image enhancement to improve accuracy and performance in defense-grade thermal cameras.",
     skills: [
-      "Machine Learning ",
-      "Artifical Intelligence",
+      "Machine Learning",
+      "Artificial Intelligence",
       "Image Processing",
       "Python",
       "Computer Vision",
-      "Pytorch",
+      "PyTorch",
     ],
     doc: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/Screenshot%20from%202024-01-25%2022-38-31.png?alt=media&token=2785903f-1a4e-41f5-afd2-6adcfe56d058",
   },
+
   {
-    id: 2,
+    id: 1,
     img: "https://github.com/sourav349/photo/blob/main/Banzai-1-300x268.png?raw=true",
     role: "Full Stack Developer Intern",
     company: "AICTE–EY GDS",
-    date: "Feb 2025 - March 2025",
-    desc: "The AI Finance Platform integrates authentication, real-time data handling, automation, and AI intelligence to deliver a seamless finance-tracking experience.It includes modules for user account management, transaction analysis, AI receipt scanning, budget alerts, and monthly insights generation.",
+    date: "February 2025 - March 2025",
+    desc: "Developed an AI-powered finance platform integrating authentication, real-time data handling, automation, and AI-driven insights. Built modules for user account management, transaction analysis, AI-based receipt scanning, budget alerts, and monthly financial insights.",
     skills: [
-      "React 19",
-      "Next.js 15",
+      "React",
+      "Next.js",
       "Tailwind CSS",
       "Shadcn UI",
       "Node.js",
@@ -320,18 +320,39 @@ export const experiences = [
     ],
     doc: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/1696514649120.jpeg?alt=media&token=e7f6757b-edfa-4138-a692-d6709eeef3e2",
   },
+
   {
     id: 2,
+    img: "https://github.com/sourav349/photo/blob/main/collegedunia.png?raw=true",
+    role: "Data Researcher Intern",
+    company: "Collegedunia Web Private Limited",
+    date: "April 2026 - June 2026",
+    desc: "At Collegedunia Web Private Limited, Gurugram, I worked as a Data Researcher Intern, focusing on data collection, research, validation, and analysis to support business and content requirements. I worked with structured datasets, performed data quality checks, researched and organized information from multiple sources, and generated accurate insights to support data-driven decision-making.",
+    skills: [
+      "Data Analysis",
+      "Data Research",
+      "Python",
+      "SQL",
+      "Data Cleaning",
+      "Data Validation",
+      "Excel",
+      "Research",
+    ],
+    doc: "YOUR_COLLEGEDUNIA_DOCUMENT_URL",
+  },
+
+  {
+    id: 3,
     img: "https://github.com/sourav349/photo/blob/main/opengraph.6e804091.png?raw=true",
-    role: "Open Source Contributor ",
+    role: "Open Source Contributor",
     company: "Hacktoberfest",
-    date: " Oct 2024 - Present ",
-    desc: "Contributed to multiple open-source projects during Hacktoberfest, collaborating with industry experts to develop impactful solutions and enhance user interfaces, gaining valuable experience in real-world software development and teamwork.",
+    date: "October 2024 - Present",
+    desc: "Contributed to multiple open-source projects during Hacktoberfest, collaborating with developers to implement features, improve user interfaces, fix issues, and gain practical experience in real-world software development and collaborative workflows.",
     skills: [
       "Android",
       "Java",
       "Python",
-      "Node Js",
+      "Node.js",
       "React.js",
       "Firebase",
       "Flask",
@@ -342,21 +363,26 @@ export const experiences = [
   },
 
   {
-    id: 3,
+    id: 4,
     img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/gdsc.jpeg?alt=media&token=c162329c-efaa-4be8-a173-8d3f4c48ea70",
     role: "Android Developer",
     company: "DSC JUET",
-    date: "Sept2023 - Nov2024",
-    desc: "As an Fronted developer at the Google Developers Student Club (GDCS), I have had the opportunity to work on exciting projects and collaborate with talented developers who share my passion for technology. Through my involvement with GDCS, I have also had the opportunity to host and participate in numerous events, including hackathons, study jams, and workshops.",
-    skills: ["Leadership", "Web Application Development"],
+    date: "September 2023 - November 2024",
+    desc: "As an Android Developer at the Google Developers Student Club (DSC JUET), I worked on development projects and collaborated with fellow developers. I also contributed to organizing and participating in technical events, including hackathons, study jams, and workshops.",
+    skills: [
+      "Android Development",
+      "Leadership",
+      "Web Application Development",
+    ],
   },
+
   {
-    id: 4,
-    img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/girlScript.jpeg?alt=media&token=e656a621-cf3c-4230-bf0f-e74b4cec6035",
-    role: "Open Source Contributor ",
+    id: 5,
+    img: "https://github.com/sourav349/photo/blob/main/girlscriptso.jpeg?raw=true",
+    role: "Open Source Contributor",
     company: "GirlScript Summer of Code",
     date: "October 2024 - Present",
-    desc: "Contributed to different open-source projects and learn from industry experts",
+    desc: "Contributed to open-source projects by implementing features, fixing issues, and collaborating with developers. Gained practical experience with Git, GitHub, code reviews, and collaborative software development.",
   },
 ];
 
