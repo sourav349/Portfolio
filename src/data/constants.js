@@ -203,41 +203,97 @@ export const skills = [
   //     },
   //   ],
   // },
-  {
-    title: "Machine Learning",
-    skills: [
-      {
-        name: "Python",
-        image:
-          "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
-      },
-      {
-        name: "Tenserflow",
-        image:
-          "https://static-00.iconduck.com/assets.00/tensorflow-icon-1911x2048-1m2s54vn.png",
-      },
-      //     {
-      //       name: "Keras",
-      //       image:
-      //         "https://miro.medium.com/v2/resize:fit:600/1*DKu_54iqz6C-p6ndo7rO3g.png",
-      //     },
-      {
-        name: "Jupyter",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/1767px-Jupyter_logo.svg.png",
-      },
-      {
-        name: "Google Colab",
-        image:
-          "https://assets.stickpng.com/images/63c2e4c9c4baad4ce22bf9ef.png",
-      },
-      {
-        name: "Sk Learn Kit",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/2560px-Scikit_learn_logo_small.svg.png",
-      },
-    ],
-  },
+ {
+  title: "Artificial Intelligence & Machine Learning",
+
+  skills: [
+    {
+      name: "Python",
+      image:
+        "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
+    },
+    {
+      name: "TensorFlow",
+      image:
+        "https://static-00.iconduck.com/assets.00/tensorflow-icon-1911x2048-1m2s54vn.png",
+    },
+    {
+      name: "PyTorch",
+      image:
+        "https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg",
+    },
+    {
+      name: "NumPy",
+      image:
+        "https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg",
+    },
+    {
+      name: "Pandas",
+      image:
+        "https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg",
+    },
+    {
+      name: "PySpark",
+      image:
+        "https://raw.githubusercontent.com/devicons/devicon/master/icons/apachespark/apachespark-original.svg",
+    },
+    {
+      name: "Scikit-learn",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Scikit_learn_logo_small.svg/2560px-Scikit_learn_logo_small.svg.png",
+    },
+    {
+      name: "OpenCV",
+      image:
+        "https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg",
+    },
+    {
+      name: "Jupyter",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jupyter_logo.svg/1767px-Jupyter_logo.svg.png",
+    },
+    {
+      name: "Google Colab",
+      image:
+        "https://assets.stickpng.com/images/63c2e4c9c4baad4ce22bf9ef.png",
+    },
+   {
+  name: "CNNs",
+  image:
+    "https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg",
+},
+{
+  name: "Image Processing",
+  image:
+    "https://raw.githubusercontent.com/devicons/devicon/master/icons/opencv/opencv-original.svg",
+},
+{
+  name: "NLP",
+  image:
+    "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+},
+{
+  name: "LLMs",
+  image:
+    "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+},
+{
+  name: "RAG",
+  image:
+    "https://python.langchain.com/img/brand/wordmark.png",
+},
+{
+  name: "Fine-tuning",
+  image:
+    "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+},
+    {
+      name: "Transformers",
+      image:
+        "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+    },
+  ],
+},
   {
     title: "Others",
     skills: [
