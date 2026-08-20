@@ -2,14 +2,16 @@
 
 export const Bio = {
   name: "SOURAV KUMAR",
+
   roles: [
     "Software Developer",
     "AI/ML Engineer",
-    "Fronted Developer",
+    "Frontend Developer",
     "Programmer",
   ],
+
   description:
-    "I am a motivated and versatile individual, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.",
+  "Hi, I’m Sourav Kumar, a Computer Science and Engineering student passionate about turning complex problems into practical, intelligent, and scalable solutions. My journey spans Artificial Intelligence, Machine Learning, Computer Vision, Data Analytics, Software Development, Frontend Engineering, and System Design. I enjoy working at the intersection of these fields—building intelligent models, transforming data into meaningful insights, and designing software that people can actually use.",
   github: "https://github.com/sourav349",
   resume:
     "https://drive.google.com/file/d/1kTJorMwy3LXWOTLgfHB-zGf5_lqRDfnB/view?usp=drive_link",
