@@ -1,0 +1,116 @@
+{
+  "name": "Sourav Kumar",
+  "headline": "Software Developer · AI / ML Enthusiast",
+  "tagline": "Building intelligent experiences at the intersection of software engineering, machine learning, and thoughtful design.",
+  "location": "Gaya, Bihar, India",
+  "email": "kumarsourav2401@gmail.com",
+  "phone": "+91-9234395033",
+  "links": {
+    "github": "https://github.com/sourav349",
+    "linkedin": "https://linkedin.com/in/sourav2401",
+    "portfolio": "https://souravk-portfolio.vercel.app",
+    "codolio": "https://codolio.com/profile/sourav2401"
+  },
+  "stats": [
+    {"value": "950+", "label": "DSA problems solved"},
+    {"value": "2", "label": "Internships"},
+    {"value": "6+", "label": "Open-source PRs / MRs"}
+  ],
+  "skills": [
+    {"title": "Languages", "icon": "terminal", "items": ["C++", "Python", "Java", "Golang", "SQL"]},
+    {"title": "AI & Machine Learning", "icon": "brain", "items": ["CNNs", "Image Processing", "NLP", "LLMs", "RAG", "Fine-tuning", "PyTorch"]},
+    {"title": "Engineering & Cloud", "icon": "layers", "items": ["React.js", "FastAPI", "REST APIs", "Streamlit", "Docker", "AWS", "CI/CD", "NumPy", "Pandas", "Scikit-learn"]},
+    {"title": "Data & Analytics", "icon": "chart", "items": ["SQL", "Excel", "Power BI", "Data Cleaning", "Data Validation", "EDA", "Data Visualization"]}
+  ],
+  "education": [
+    {
+      "school": "Jaypee University of Engineering and Technology",
+      "degree": "B.Tech in Computer Science and Engineering",
+      "period": "Aug 2023 – May 2027",
+      "location": "Guna, Madhya Pradesh",
+      "detail": "CGPA: 7.3"
+    }
+  ],
+  "experience": [
+    {
+      "organization": "IRDE–DRDO",
+      "full_name": "Instruments Research & Development Establishment (IRDE–DRDO)",
+      "role": "Machine Learning / Image Processing Intern",
+      "period": "May 2025 – July 2025",
+      "location": "Dehradun, India",
+      "points": [
+        "Implemented Non-Uniformity Correction (NUC) methods and LSC-CNN to enhance infrared image quality for thermal imaging applications.",
+        "Developed and trained CNN and Deep Filter Neural Networks for infrared image denoising and correction.",
+        "Designed deep learning workflows in PyTorch for imaging and restoration tasks."
+      ]
+    },
+    {
+      "organization": "Collegedunia.com",
+      "full_name": "Collegedunia.com",
+      "role": "Data Researcher Intern",
+      "period": "April 2026 – June 2026",
+      "location": "Remote",
+      "points": [
+        "Conducted data research, collection, and validation across educational datasets.",
+        "Used Python and Microsoft Excel for cleaning, analysis, and reporting.",
+        "Prepared structured reports and maintained high-quality data records."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "conversion",
+      "number": "01",
+      "title": "E-commerce Conversion Prediction",
+      "subtitle": "Personalized Campaign Optimization",
+      "description": "A conversion propensity model that uses behavioral signals and funnel analysis to estimate purchase intent and inform targeted campaigns.",
+      "period": "Sep 2026 – Present",
+      "category": "Machine Learning",
+      "icon": "chart",
+      "accent": "violet",
+      "details": [
+        "Modeled purchase likelihood using views, clicks, cart events, devices, and user history.",
+        "Compared Logistic Regression, Random Forest, and XGBoost using ROC-AUC, PR-AUC, precision, and recall.",
+        "Segmented customers into low, medium, and high purchase-intent groups."
+      ],
+      "stack": ["Python", "XGBoost", "SQL", "Scikit-learn", "SHAP", "Streamlit"],
+      "repo_url": null
+    },
+    {
+      "id": "pricing",
+      "number": "02",
+      "title": "AI-Powered Smart Product Pricing",
+      "subtitle": "Visual Attribute Extraction",
+      "description": "A multimodal pricing system combining text, images, and structured attributes with OCR extraction and machine learning.",
+      "period": "Feb 2026 – Present",
+      "category": "Computer Vision",
+      "icon": "scan",
+      "accent": "cyan",
+      "details": [
+        "Extracted product weight, volume, and dimensions from images with an OCR pipeline.",
+        "Fused NLP, image, and structured features for price prediction using LightGBM.",
+        "Built using FastAPI, React.js, Docker, and PyTorch."
+      ],
+      "stack": ["LightGBM", "OCR", "OpenCV", "PyTorch", "FastAPI", "React.js"],
+      "repo_url": null
+    }
+  ],
+  "achievements": [
+    "Solved 950+ Data Structures and Algorithms problems on LeetCode, GeeksforGeeks, HackerRank, and CodeChef.",
+    "Qualified for the third phase as a solo participant in RideHack’24 at JIIT (Innovation-Startup track).",
+    "Qualified for the Smart India Hackathon (SIH) Internal 2025 at JUET.",
+    "Coordinator at Rospinot and Mozilla clubs, supporting community initiatives and collaboration.",
+    "Hacktoberfest 2025 Supercontributor with 6+ accepted open-source PRs/MRs."
+  ],
+  "certifications": [
+    {"title": "Problem Solving (Basic)", "provider": "HackerRank", "date": "Jul 2024"}
+  ],
+  "suggested_questions": [
+    "What projects has Sourav built?",
+    "Which technologies does Sourav know?",
+    "Where has Sourav interned?",
+    "Tell me about Sourav's education",
+    "What are Sourav's achievements?",
+    "How can I contact Sourav?"
+  ]
+}
