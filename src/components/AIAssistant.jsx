@@ -1,382 +1,232 @@
-// AIAssistant.jsx
-import React, { useRef, useState } from "react";
-import styled from "styled-components";
-import { motion, AnimatePresence } from "framer-motion";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Html, OrbitControls } from "@react-three/drei";
-// import * as THREE from "three";
+import React, { useEffect, useRef, useState } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Float } from '@react-three/drei';
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  FiArrowRight, FiAward, FiBookOpen, FiBriefcase, FiCheck,
+  FiCode, FiCopy, FiExternalLink, FiGithub, FiMail, FiMessageCircle,
+  FiRotateCcw, FiSend, FiShield, FiStar, FiUser, FiX,
+} from 'react-icons/fi';
+import './AIAssistant.css';
 
-/* =========================
-   Styled UI (chat + container)
-   ========================= */
-const AssistantContainer = styled.div`
-  position: fixed;
-  bottom: 36px;
-  right: 36px;
-  width: 260px;
-  height: 260px;
-  z-index: 9999;
-  pointer-events: auto;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-`;
+const API = (process.env.REACT_APP_API_URL || '').replace(/\/$/, '');
+const INITIAL = [{ role: 'assistant', text: "Hi! 👋 I'm Sourav's AI assistant. Ask me about his projects, skills, internships, education or achievements. I'll stick to what his resume actually supports.", mode: 'welcome' }];
+const MENU = [
+  { name: 'About', icon: FiUser, question: 'Tell me about Sourav' },
+  { name: 'Skills', icon: FiCode, question: 'Which technologies does Sourav know?' },
+  { name: 'Projects', icon: FiBriefcase, question: 'What projects has Sourav built?' },
+  { name: 'Education', icon: FiBookOpen, question: "Tell me about Sourav's education" },
+  { name: 'Awards', icon: FiAward, question: "What are Sourav's achievements?" },
+  { name: 'Contact', icon: FiMail, question: 'How can I contact Sourav?' },
+];
+const SUGGESTIONS = [
+  'What projects has Sourav built?',
+  'Where has Sourav interned?',
+  'Which AI/ML tools does he know?',
+];
 
-const BubbleText = styled(motion.div)`
-  position: absolute;
-  bottom: 145px; /* aligned perfectly near the bot */
-  right: 160px; /* nicely close to the assistant */
-  background: linear-gradient(135deg, #ff5fa3, #854ce6);
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 10px 14px 14px 2px; /* 👈 sharper tail-like edge */
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 8px 25px rgba(133, 76, 230, 0.4);
-  white-space: nowrap;
-  pointer-events: none;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(6px);
-  transform: perspective(300px) rotateY(-5deg); /* slight 3D twist */
-  transition: all 0.3s ease;
-
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: 8px;
-    right: -6px;
-    width: 10px;
-    height: 10px;
-    background: linear-gradient(135deg, #854ce6, #ff5fa3);
-    transform: rotate(45deg);
-    border-radius: 2px; /* sharp tail corner */
-    box-shadow: 0 0 10px rgba(255, 95, 163, 0.6);
-  }
-`;
-
-/* (Everything else remains the same below) */
-
-const ChatPanel = styled(motion.div)`
-  position: absolute;
-  bottom: 280px;
-  right: 0;
-  width: 320px;
-  max-width: calc(100vw - 48px);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.02),
-    rgba(255, 255, 255, 0.01)
-  );
-  backdrop-filter: blur(8px);
-  border-radius: 14px;
-  padding: 14px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-  color: #fff;
-  font-family: Inter, system-ui, sans-serif;
-  overflow: hidden;
-`;
-
-const ChatHeader = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-`;
-
-const BotName = styled.div`
-  font-weight: 700;
-  font-size: 16px;
-`;
-
-const ChatBody = styled.div`
-  font-size: 14px;
-  color: #e6e6e6;
-  margin-bottom: 10px;
-  line-height: 1.3;
-`;
-
-const InputRow = styled.div`
-  display: flex;
-  gap: 8px;
-  align-items: center;
-`;
-
-const TextInput = styled.input`
-  flex: 1;
-  padding: 8px 10px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  color: #fff;
-  outline: none;
-  font-size: 14px;
-`;
-
-const MailBtn = styled.button`
-  padding: 8px 10px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #00fff0, #854ce6);
-  color: #081827;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-`;
-
-/* =========================
-   3D Bot (Three fiber)
-   ========================= */
+// Keep the animated 3D mascot from the existing Portfolio repository.
 function Visor({ position = [0, 0.5, 0.6] }) {
-  return (
-    <mesh position={position}>
-      <sphereGeometry args={[0.42, 48, 48]} />
-      <meshStandardMaterial
-        color={"#06061a"}
-        metalness={0.2}
-        roughness={0.1}
-        emissive={"#0a1228"}
-        emissiveIntensity={0.7}
-      />
-    </mesh>
-  );
+  return <mesh position={position}>
+    <sphereGeometry args={[0.42, 48, 48]} />
+    <meshStandardMaterial color="#06061a" metalness={0.2} roughness={0.1} emissive="#0a1228" emissiveIntensity={0.7}/>
+  </mesh>;
 }
-
-function BodyPiece({
-  args = [0.66, 48, 48],
-  position = [0, -0.7, 0],
-  color = "#c2f6ff",
-  emissive,
-}) {
-  return (
-    <mesh position={position} castShadow receiveShadow>
-      <sphereGeometry args={args} />
-      <meshStandardMaterial
-        color={color}
-        metalness={0.2}
-        roughness={0.45}
-        emissive={emissive || "#000000"}
-        emissiveIntensity={0.5}
-      />
-    </mesh>
-  );
+function BodyPiece({ args = [0.66, 48, 48], position = [0, -0.7, 0], color = '#c2f6ff', emissive }) {
+  return <mesh position={position} castShadow receiveShadow>
+    <sphereGeometry args={args}/>
+    <meshStandardMaterial color={color} metalness={0.2} roughness={0.45} emissive={emissive || '#000000'} emissiveIntensity={0.5}/>
+  </mesh>;
 }
-
-function FloatingBot({ clicked, setClicked, handGesture }) {
+function FloatingBot() {
   const root = useRef();
   const leftHand = useRef();
   const rightHand = useRef();
-
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     if (root.current) {
       root.current.position.y = Math.sin(t * 1.2) * 0.06;
       root.current.rotation.y = Math.sin(t / 4) * 0.08;
     }
-
     if (leftHand.current) {
-      leftHand.current.rotation.z =
-        Math.sin(t * 2.4) * 0.35 + (handGesture ? Math.sin(t * 10) * 0.6 : 0);
-      leftHand.current.position.x =
-        0.85 + Math.sin(t * 1.5) * 0.02 + (handGesture ? 0.02 : 0);
+      leftHand.current.rotation.z = Math.sin(t * 2.4) * 0.35;
+      leftHand.current.position.x = 0.85 + Math.sin(t * 1.5) * 0.02;
     }
     if (rightHand.current) {
       rightHand.current.rotation.z = -Math.sin(t * 1.8) * 0.22;
       rightHand.current.position.x = -0.85 + Math.cos(t * 1.2) * 0.02;
     }
   });
-
-  return (
-    <Float floatIntensity={0.6} rotationIntensity={0.8} speed={1.2}>
-      <group ref={root} scale={0.64}>
-        <mesh position={[0, 0.5, 0]}>
-          <sphereGeometry args={[0.82, 64, 64]} />
-          <meshStandardMaterial
-            color={"#dff9ff"}
-            metalness={0.15}
-            roughness={0.35}
-            emissive={"#0b3b44"}
-            emissiveIntensity={0.06}
-          />
-        </mesh>
-        <Visor />
-        <BodyPiece
-          position={[0, -0.2, 0]}
-          args={[0.68, 64, 64]}
-          color={"#e9feff"}
-          emissive={"#0f2430"}
-        />
-        <group ref={leftHand} position={[0.9, -0.25, 0]}>
-          <mesh>
-            <sphereGeometry args={[0.23, 32, 32]} />
-            <meshStandardMaterial
-              color={"#00f0f0"}
-              emissive={"#00f0f0"}
-              emissiveIntensity={0.9}
-              metalness={0.25}
-              roughness={0.2}
-            />
-          </mesh>
-        </group>
-        <group ref={rightHand} position={[-0.9, -0.25, 0]}>
-          <mesh>
-            <sphereGeometry args={[0.23, 32, 32]} />
-            <meshStandardMaterial
-              color={"#854ce6"}
-              emissive={"#854ce6"}
-              emissiveIntensity={0.9}
-              metalness={0.25}
-              roughness={0.2}
-            />
-          </mesh>
-        </group>
-        <mesh position={[0, -0.18, 0.48]} rotation={[0, 0, 0]}>
-          <circleGeometry args={[0.14, 32]} />
-          <meshStandardMaterial
-            color={"#0b1636"}
-            emissive={"#b16ef6"}
-            emissiveIntensity={0.7}
-          />
-        </mesh>
+  return <Float floatIntensity={0.6} rotationIntensity={0.8} speed={1.2}>
+    <group ref={root} scale={0.64}>
+      <mesh position={[0, 0.5, 0]}>
+        <sphereGeometry args={[0.82, 64, 64]} />
+        <meshStandardMaterial color="#dff9ff" metalness={0.15} roughness={0.35} emissive="#0b3b44" emissiveIntensity={0.06}/>
+      </mesh>
+      <Visor />
+      <BodyPiece position={[0, -0.2, 0]} args={[0.68, 64, 64]} color="#e9feff" emissive="#0f2430"/>
+      <group ref={leftHand} position={[0.9, -0.25, 0]}>
+        <mesh><sphereGeometry args={[0.23, 32, 32]}/><meshStandardMaterial color="#00f0f0" emissive="#00f0f0" emissiveIntensity={0.9} metalness={0.25} roughness={0.2}/></mesh>
       </group>
-    </Float>
-  );
+      <group ref={rightHand} position={[-0.9, -0.25, 0]}>
+        <mesh><sphereGeometry args={[0.23, 32, 32]}/><meshStandardMaterial color="#854ce6" emissive="#854ce6" emissiveIntensity={0.9} metalness={0.25} roughness={0.2}/></mesh>
+      </group>
+      <mesh position={[0, -0.18, 0.48]}>
+        <circleGeometry args={[0.14, 32]}/>
+        <meshStandardMaterial color="#0b1636" emissive="#b16ef6" emissiveIntensity={0.7}/>
+      </mesh>
+    </group>
+  </Float>;
 }
 
-/* =========================
-   Main exported component
-   ========================= */
+class RobotErrorBoundary extends React.Component {
+  constructor(props) { super(props); this.state = { failed: false }; }
+  static getDerivedStateFromError() { return { failed: true }; }
+  render() { return this.state.failed ? <FiMessageCircle size={33}/> : this.props.children; }
+}
+
+function FormattedText({ text }) {
+  // Small, safe subset of Markdown: bold spans; no HTML or arbitrary links.
+  return <>{String(text || '').split(/(\*\*[^*]+\*\*)/g).map((chunk, index) =>
+    chunk.startsWith('**') && chunk.endsWith('**')
+      ? <strong key={index}>{chunk.slice(2, -2)}</strong>
+      : <React.Fragment key={index}>{chunk}</React.Fragment>
+  )}</>;
+}
+
+function ChatBubble({ message }) {
+  const [copied, setCopied] = useState(false);
+  async function copyAnswer() {
+    try { await navigator.clipboard.writeText(message.text); setCopied(true); setTimeout(() => setCopied(false), 1600); }
+    catch { /* Clipboard unavailable; leave message unchanged. */ }
+  }
+  return <div className={`spai-line ${message.role === 'user' ? 'spai-line-user' : ''}`}>
+    {message.role === 'assistant' && <span className="spai-avatar"><FiStar size={15}/></span>}
+    <div className="spai-bubble-wrap">
+      <div className={`spai-bubble spai-bubble-${message.role}`}><FormattedText text={message.text}/></div>
+      {message.role === 'assistant' && message.mode !== 'welcome' && message.mode !== 'error' && <div className="spai-source">
+        <FiShield size={12}/><span>{message.mode === 'offline' ? 'Resume lookup' : 'Grounded in resume'}</span>
+        {message.sources?.length > 0 && <span className="spai-source-names">· {message.sources.slice(0, 2).join(' / ')}</span>}
+        <button type="button" onClick={copyAnswer} title="Copy answer" aria-label="Copy answer">{copied ? <FiCheck/> : <FiCopy/>}</button>
+      </div>}
+    </div>
+  </div>;
+}
+
 export default function AIAssistant() {
   const [open, setOpen] = useState(false);
-  const [handGesture, setHandGesture] = useState(false);
-  const [question, setQuestion] = useState("");
+  const [messages, setMessages] = useState(INITIAL);
+  const [input, setInput] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [connected, setConnected] = useState(false);
+  const [profile, setProfile] = useState(null);
+  const listEnd = useRef(null);
+  const inputEl = useRef(null);
+  const sending = useRef(false);
+  const history = useRef([]);
 
-  function handleAssistantClick() {
-    setHandGesture(true);
-    setTimeout(() => setHandGesture(false), 900);
-    setOpen((s) => !s);
+  useEffect(() => {
+    let active = true;
+    Promise.allSettled([
+      fetch(`${API}/api/health`).then(r => { if (!r.ok) throw new Error('offline'); return r.json(); }),
+      fetch(`${API}/api/profile`).then(r => { if (!r.ok) throw new Error('offline'); return r.json(); }),
+    ]).then(([health, data]) => {
+      if (!active) return;
+      setConnected(health.status === 'fulfilled' && health.value.status === 'ok');
+      if (data.status === 'fulfilled') setProfile(data.value);
+    });
+    return () => { active = false; };
+  }, []);
+  useEffect(() => { if (open) listEnd.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }); }, [messages, loading, open]);
+  useEffect(() => { if (open) inputEl.current?.focus(); }, [open]);
+  useEffect(() => {
+    const onKey = (event) => { if (event.key === 'Escape') setOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  async function ask(value) {
+    const question = String(value || '').trim();
+    if (question.length < 2 || sending.current) return;
+    sending.current = true;
+    setOpen(true);
+    setInput('');
+    setLoading(true);
+    setMessages(previous => [...previous, { role: 'user', text: question }]);
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 30000);
+    try {
+      const response = await fetch(`${API}/api/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question, history: history.current.slice(-6) }),
+        signal: controller.signal,
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(typeof data.detail === 'string' ? data.detail : 'The AI service is currently unavailable.');
+      const answer = typeof data.answer === 'string' ? data.answer : 'No answer was returned.';
+      setMessages(previous => [...previous, { role: 'assistant', text: answer, sources: data.sources || [], mode: data.mode || 'grounded' }]);
+      history.current = [...history.current, { role: 'user', content: question }, { role: 'assistant', content: answer }].slice(-8);
+      setConnected(true);
+    } catch (error) {
+      setMessages(previous => [...previous, { role: 'assistant', mode: 'error', text:
+        error.name === 'AbortError' ? 'The request timed out. Please try again.'
+          : error instanceof TypeError ? 'The portfolio AI server is not reachable right now. Please try again later.'
+          : error.message,
+      }]);
+    } finally {
+      clearTimeout(timer);
+      sending.current = false;
+      setLoading(false);
+    }
   }
+  function reset() { history.current = []; setMessages(INITIAL); setInput(''); inputEl.current?.focus(); }
 
-  function handleMail() {
-    const body = encodeURIComponent(
-      `${question}\n\n— Sent by Sourav's AI Assistant`
-    );
-    window.location.href = `mailto:someone@example.com?subject=Question from Sourav&body=${body}`;
-  }
-
-  return (
-    <AssistantContainer>
-      {/* floating "Hi!" bubble */}
-      <BubbleText
-        initial={{ opacity: 0, y: 10, scale: 0.9 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{
-          duration: 0.7,
-          delay: 0.2,
-          type: "spring",
-          stiffness: 120,
-        }}
-      >
-        Hi!
-      </BubbleText>
-
-      {/* Chat panel */}
-      <AnimatePresence>
-        {open && (
-          <ChatPanel
-            initial={{ opacity: 0, translateY: 10, scale: 0.98 }}
-            animate={{ opacity: 1, translateY: 0, scale: 1 }}
-            exit={{ opacity: 0, translateY: 10, scale: 0.98 }}
-            transition={{ duration: 0.25 }}
-          >
-            <ChatHeader>
-              <svg
-                width="36"
-                height="36"
-                viewBox="0 0 24 24"
-                fill="none"
-                style={{ borderRadius: 10 }}
-              >
-                <circle cx="12" cy="12" r="12" fill="#dff9ff" />
-                <circle cx="12" cy="12" r="7" fill="#0b1636" />
-              </svg>
-              <div>
-                <BotName>AI Assistant</BotName>
-                <div style={{ fontSize: 12, color: "#9aa0a6" }}>
-                  Sourav's helper
-                </div>
-              </div>
-            </ChatHeader>
-
-            <ChatBody>
-              How can I help you? Or assist you — what question do you want to
-              ask, From Sourav?
-              <div style={{ marginTop: 8, fontSize: 13, color: "#bfbfbf" }}>
-                You can just type below and mail it.
-              </div>
-            </ChatBody>
-
-            <InputRow>
-              <TextInput
-                placeholder="Type your question..."
-                value={question}
-                onChange={(e) => setQuestion(e.target.value)}
-              />
-              <MailBtn onClick={handleMail}>Mail it</MailBtn>
-            </InputRow>
-          </ChatPanel>
-        )}
-      </AnimatePresence>
-
-      {/* Canvas */}
-      <div
-        style={{
-          width: 220,
-          height: 220,
-          borderRadius: 18,
-          overflow: "hidden",
-          boxShadow: "0 10px 30px rgba(2,6,20,0.6)",
-        }}
-      >
-        <Canvas camera={{ position: [0, 0, 3.2], fov: 50 }}>
-          <ambientLight intensity={0.45} />
-          <pointLight position={[3, 4, 3]} intensity={1.1} color={"#00f7f0"} />
-          <pointLight
-            position={[-3, -3, -2]}
-            intensity={0.8}
-            color={"#8b49f0"}
-          />
-          <directionalLight
-            position={[0, 5, 2]}
-            intensity={0.6}
-            color={"#ffffff"}
-          />
-          <Html position={[0, -0.9, 0]} center>
-            <div
-              onClick={handleAssistantClick}
-              role="button"
-              aria-label="Open AI Assistant"
-              style={{
-                width: 220,
-                height: 220,
-                cursor: "pointer",
-                display: "block",
-                background: "transparent",
-              }}
-            />
-          </Html>
-
-          <FloatingBot
-            clicked={open}
-            setClicked={setOpen}
-            handGesture={handGesture}
-          />
-
-          <OrbitControls
-            enableZoom={false}
-            enablePan={false}
-            autoRotate={false}
-          />
-        </Canvas>
-      </div>
-    </AssistantContainer>
-  );
+  return <div className="spai-root">
+    <AnimatePresence>
+      {open && <motion.section className="spai-panel" role="dialog" aria-modal="false" aria-label="Sourav AI portfolio assistant"
+        initial={{ opacity: 0, y: 24, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 14, scale: 0.96 }} transition={{ duration: 0.24 }}>
+        <div className="spai-header">
+          <div className="spai-header-icon"><FiStar size={22}/></div>
+          <div className="spai-header-text"><h2>Ask Sourav AI <span>BETA</span></h2><p>Explore my work, projects &amp; experience</p></div>
+          <div className="spai-header-actions">
+            <button type="button" onClick={reset} title="New conversation" aria-label="New conversation"><FiRotateCcw/></button>
+            <button type="button" onClick={() => setOpen(false)} title="Close assistant" aria-label="Close assistant"><FiX/></button>
+          </div>
+        </div>
+        <div className="spai-status"><span className={connected ? 'spai-dot spai-dot-on' : 'spai-dot'}/>{connected ? 'Assistant connected' : 'Assistant connection unavailable'} <span className="spai-status-detail">· Resume-based answers</span></div>
+        <div className="spai-quick-nav" aria-label="Quick questions">
+          {MENU.map(({ name, icon: Icon, question }) => <button key={name} type="button" disabled={loading} onClick={() => ask(question)}><Icon size={14}/>{name}</button>)}
+        </div>
+        <div className="spai-chat-scroll" role="log" aria-live="polite" aria-relevant="additions">
+          <div className="spai-intro"><span>✦ Your personal guide to Sourav's portfolio</span></div>
+          {messages.map((m, index) => <ChatBubble key={index} message={m}/>)}
+          {loading && <div className="spai-line"><span className="spai-avatar"><FiStar/></span><div className="spai-typing" aria-label="Assistant is responding"><i/><i/><i/></div></div>}
+          {messages.length === 1 && profile?.projects?.length > 0 && <div className="spai-featured">
+            <div className="spai-featured-title">FEATURED PROJECTS</div>
+            {profile.projects.slice(0, 2).map(p => <button key={p.id} type="button" onClick={() => ask(`Explain ${p.title}`)}><span><strong>{p.title}</strong><small>{p.subtitle}</small></span><FiArrowRight/></button>)}
+          </div>}
+          <div ref={listEnd}/>
+        </div>
+        <div className="spai-bottom">
+          {messages.length === 1 && <div className="spai-suggestions">
+            {SUGGESTIONS.map(q => <button key={q} type="button" onClick={() => ask(q)} disabled={loading}>{q} <FiArrowRight size={13}/></button>)}
+          </div>}
+          <form onSubmit={event => { event.preventDefault(); ask(input); }} className="spai-input-row">
+            <input ref={inputEl} maxLength={1000} disabled={loading} value={input} onChange={event => setInput(event.target.value)} placeholder="Ask anything about Sourav..." aria-label="Ask Sourav's AI assistant"/>
+            <button disabled={!input.trim() || loading} type="submit" aria-label="Send question"><FiSend size={17}/></button>
+          </form>
+          <div className="spai-footer"><span><FiShield/> Answers only from documented experience</span><a href="https://github.com/sourav349/Portfolio" target="_blank" rel="noreferrer"><FiGithub/> Code <FiExternalLink size={11}/></a></div>
+        </div>
+      </motion.section>}
+    </AnimatePresence>
+    <button type="button" onClick={() => setOpen(v => !v)} className={`spai-launcher ${open ? 'spai-launcher-open' : ''}`} aria-label={open ? 'Close AI assistant' : 'Open AI assistant'} aria-expanded={open}>
+      <span className="spai-launcher-label">{open ? 'Close chat' : 'Ask me anything'} <FiArrowRight size={14}/></span>
+      <span className="spai-robot" aria-hidden="true"><RobotErrorBoundary><Canvas camera={{ position: [0, 0, 3.2], fov: 50 }} dpr={[1, 1.5]} style={{ pointerEvents: 'none' }}>
+        <ambientLight intensity={0.6}/><pointLight position={[3, 4, 3]} intensity={1.2} color="#00f7f0"/><pointLight position={[-3, -3, -2]} intensity={0.8} color="#8b49f0"/>
+        <FloatingBot/>
+      </Canvas></RobotErrorBoundary></span>
+      <span className="spai-bot-online"/>
+    </button>
+  </div>;
 }
